@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import {  Link, useSearchParams } from 'react-router-dom';
 import { getMovie } from 'components/Api/Api';
-// import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 const Movies = () => {
   const [searchMovie, setSearchMovie] = useSearchParams();
@@ -36,7 +36,7 @@ const Movies = () => {
   return (
     <>
       {error && <p>Movie {movieName} not found</p>}
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
       <form>
         <input type="text" value={movieName} onChange={heandleSearch} />
         <label>Movie search</label>
