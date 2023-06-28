@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import {  Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { getMovie } from 'components/Api/Api';
 import { Loader } from 'components/Loader/Loader';
 
 const Movies = () => {
   const [searchMovie, setSearchMovie] = useSearchParams();
-  const [movies, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const movieName = searchMovie.get('movieName') ?? '';
@@ -15,7 +15,7 @@ const Movies = () => {
       try {
         setIsLoading(true);
         const data = await getMovie(movieName);
-        setMovie(data.results);
+        setMovies(data.results);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -24,21 +24,22 @@ const Movies = () => {
     };
 
     fetchMovie();
-  }, [movieName, error]);
+  }, [movieName]);
 
-  const heandleSearch = evt => {
+  const handleSearch = evt => {
     const movieNameValue = evt.target.value;
     if (movieNameValue === '') {
       return setSearchMovie({});
     }
     setSearchMovie({ movieName: movieNameValue });
   };
+
   return (
     <>
       {error && <p>Movie {movieName} not found</p>}
       {isLoading && <Loader />}
       <form>
-        <input type="text" value={movieName} onChange={heandleSearch} />
+        <input type="text" value={movieName} onChange={handleSearch} />
         <label>Movie search</label>
       </form>
 
@@ -54,3 +55,8 @@ const Movies = () => {
 };
 
 export default Movies;
+
+
+
+
+
