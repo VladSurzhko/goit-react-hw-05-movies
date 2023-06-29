@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import { getMovies } from "../../Api/Api"
 import { Loader } from 'components/Loader/Loader';
-import { ListTopMovies, MoviesText, SectionTopMovies, Links } from './Home.styled';
+import { ListTopMovies, MoviesText, SectionTopMovies, } from './Home.styled';
 import { Link } from 'react-router-dom';
 
 
