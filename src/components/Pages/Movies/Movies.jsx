@@ -12,7 +12,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const movieName = searchMovie.get('movieName') ?? '';
+  // const movieName = searchMovie.get('movieName') ?? '';
   const [isInputEmpty, setIsInputEmpty] = useState(true);
   const [searchInputValue, setSearchInputValue] = useState("")
 
@@ -81,7 +81,7 @@ const Movies = () => {
   return (
     <>
       {!isInputEmpty && error && (
-       <p>Movie {movieName} not found</p>
+       <p>Movie {searchInputValue} not found</p>
       )}
 
       {isLoading && <Loader />}
@@ -89,7 +89,7 @@ const Movies = () => {
       <LabelSearch>Movie search</LabelSearch>
         <InputSearch 
         type="text" 
-        value={movieName}
+        value={searchInputValue}
         onChange={handleSearch} />
         
       </FormSearch>
