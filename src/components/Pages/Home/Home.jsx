@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import { getMovies } from "../../Api/Api"
 import { Loader } from 'components/Loader/Loader';
-import { ListTopMovies, SectionTopMovies,  } from './Home.styled';
+import { ListTopMovies, MoviesText, SectionTopMovies, Links } from './Home.styled';
 import { Link } from 'react-router-dom';
 
 
@@ -40,9 +40,9 @@ useEffect(() => {
       <h1>Trending Movies</h1>
       <ListTopMovies>
       {listMovies.map(movie => (
-        <div key={movie.id}>
+        <MoviesText key={movie.id}>
           <Link to={`movies/${movie.id}`} state={{}}>{movie.title}</Link>
-        </div>
+        </MoviesText>
       ))}
       </ListTopMovies>
     </SectionTopMovies>

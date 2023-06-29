@@ -29,10 +29,10 @@ const MovieDetails = () => {
           setDate(date);
           setUrlImage(url);
         }
-        setGenres(genres);
-        setMovie(movie);
-        setDate(date);
-        setUrlImage(url);
+        // setGenres(genres);
+        // setMovie(movie);
+        // setDate(date);
+        // setUrlImage(url);
       } catch (error) {
         setError(error.message);
       } finally {

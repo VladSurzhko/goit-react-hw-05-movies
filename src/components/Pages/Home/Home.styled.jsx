@@ -23,3 +23,22 @@ export const ListTopMovies = styled.ul`
     font-weight: 600;
   }
 `;
+export const MoviesText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: black
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+`;
+
+// export const Links = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 8px;
+//   color: black
+//   font-size: 18px;
+//   font-weight: 600;
+//   text-decoration: none;
+// `;
