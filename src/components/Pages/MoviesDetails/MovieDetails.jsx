@@ -45,10 +45,16 @@ const MovieDetails = () => {
   const { title, overview, vote_average } = movie;
   console.log('movie', movie);
 
+  const handleGoBack = () => {
+    window.history.back(); 
+  };
+
+
   return (
     <section>
       {error && <p>Sorry, something went wrong</p>}
       {isLoading && <Loader />}
+      <button onClick={handleGoBack}>Go Back</button>
       <div>
         <img src={urlImage} alt={title}></img>
         <div>
