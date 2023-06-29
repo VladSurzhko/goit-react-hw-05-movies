@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getDetailMovie } from 'components/Api/Api';
 import { Loader } from 'components/Loader/Loader';
 import { Outlet, useParams, Link } from 'react-router-dom';
+import { ButtonBack } from './MoviesDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -54,7 +55,7 @@ const MovieDetails = () => {
     <section>
       {error && <p>Sorry, something went wrong</p>}
       {isLoading && <Loader />}
-      <button onClick={handleGoBack}>Go Back</button>
+      <ButtonBack onClick={handleGoBack}>Go Back</ButtonBack>
       <div>
         <img src={urlImage} alt={title}></img>
         <div>
