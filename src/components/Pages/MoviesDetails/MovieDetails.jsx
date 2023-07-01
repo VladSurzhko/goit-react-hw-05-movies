@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react';
+
+
+
+
+import { useEffect, useState, useRef } from 'react';
 import { getDetailMovie } from 'components/Api/Api';
 import { Loader } from 'components/Loader/Loader';
-import { Outlet, useParams, Link } from 'react-router-dom';
+import { Outlet, useParams, Link, useLocation } from 'react-router-dom';
 import { ButtonBack } from './MoviesDetails.styled';
 
 const MovieDetails = () => {
+  const location = useLocation();
+  const goBack = useRef(location.state?.from ?? '/');
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -12,6 +18,8 @@ const MovieDetails = () => {
   const [urlImage, setUrlImage] = useState('');
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  
+  
 
   useEffect(() => {
     const fetchDetalsMovie = async () => {
@@ -44,10 +52,10 @@ const MovieDetails = () => {
   }, [movieId]);
 
   const { title, overview, vote_average } = movie;
-  console.log('movie', movie);
+  // console.log('movie', movie);
 
-  const handleGoBack = () => {
-    window.history.back(); 
+  const handelGoBack = () => {
+    window.history.back(goBack); 
   };
 
 
@@ -55,7 +63,7 @@ const MovieDetails = () => {
     <section>
       {error && <p>Sorry, something went wrong</p>}
       {isLoading && <Loader />}
-      <ButtonBack onClick={handleGoBack}>Go Back</ButtonBack>
+      <ButtonBack onClick={handelGoBack}>Go Back</ButtonBack>
       <div>
         <img src={urlImage} alt={title}></img>
         <div>
